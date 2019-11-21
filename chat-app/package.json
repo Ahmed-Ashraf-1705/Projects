@@ -126,5 +126,16 @@
     "start": "nodemon server.js"
   },
   "author": "Ahmed Ashraf",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ahmed-Ashraf-1705/Projects.git"
+  },
+  "keywords": [
+    "chat-app"
+  ],
+  "bugs": {
+    "url": "https://github.com/Ahmed-Ashraf-1705/Projects/issues"
+  },
+  "homepage": "https://github.com/Ahmed-Ashraf-1705/Projects#readme"
 }
