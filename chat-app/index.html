@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!--Links-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script defer src="client.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--Styling-->
+    <style>
+        .message-input-area {
+            position: fixed;
+            bottom: 0;
+            width: 80%;
+        }
+        .message-container {
+            overflow-y: hidden;
+            font-size: 18px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .message-container ::-webkit-scrollbar {
+            display: none;
+        }
+        .chat-msg {
+            font-family: sans-serif;
+        }
+        #chatArea{
+            display: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container" id="userFormArea">
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <form class="user-form">
+                    <div class="input-group mb-3 username-input-area">
+                        <input id="username" type="text" class="form-control" placeholder="Enter username" aria-label="input-username" aria-describedby="submit-button">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" id="send-button">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="chatArea">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="users-container">
+                    <h2>Online users</h2>
+                    <ul class="list-group" id="users"></ul>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="message-container mt-3">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <form class="message-form">
+                <div class="input-group mb-3 message-input-area">
+                    <input id="message" type="text" class="form-control" placeholder="Message" aria-label="input-message" aria-describedby="submit-button">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit" id="send-button">Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
