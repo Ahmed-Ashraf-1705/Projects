@@ -13,14 +13,21 @@ $(()=>{
         e.preventDefault();
         
         // send message
-        socket.emit('send-message', $msg.val());
+        socket.emit('send-message', $msg.val(),(data)=>{
+            $chat.append(`<div class='error'><strong>${data}</strong></div>`);
+        });
         $msg.val('');
     });
 
     // append message to chat
     socket.on('new-message',(data)=>{
-        $chat.append(`<div class='chat-msg'><strong>${data.user}</strong>: ${data.msg}</div>`)
-    })
+        $chat.append(`<div class='chat-msg'><strong>${data.user}</strong>: ${data.msg}</div>`);
+    });
+
+    // whisper -unicast-
+    socket.on('whisper',(data)=>{
+        $chat.append(`<div class='whisper'><strong>${data.user}</strong>: ${data.msg}</div>`);
+    });
 
     // add new user
     $userForm.submit((e)=>{
@@ -43,5 +50,7 @@ $(()=>{
             hc += `<li class='list-group-item'>${data[i]}</li>`;
         }
         $users.html(hc);
-    })
+    });
+
+    
 });
