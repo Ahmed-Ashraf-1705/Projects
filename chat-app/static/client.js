@@ -11,7 +11,7 @@ $(()=>{
 
     $msgForm.submit((e)=>{
         e.preventDefault();
-        
+
         // send message
         socket.emit('send-message', $msg.val(),(data)=>{
             $chat.append(`<div class='error'><strong>${data}</strong></div>`);
@@ -32,7 +32,7 @@ $(()=>{
     // add new user
     $userForm.submit((e)=>{
         e.preventDefault();
-        
+
         // add user
         socket.emit('new-user', $username.val(), (data)=>{
             if(data) {
@@ -52,5 +52,5 @@ $(()=>{
         $users.html(hc);
     });
 
-    
+
 });

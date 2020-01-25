@@ -26,7 +26,7 @@ app.use(express.static(__dirname + '/static'));
 
 // open socket connection and bind its events
 io.sockets.on('connection',(socket)=>{
-    
+
     console.log('Connected...');
     noOfUsers++;
     console.log(`Connections: ${noOfUsers} sockets connected...`);
@@ -43,11 +43,12 @@ io.sockets.on('connection',(socket)=>{
 
     // on send message -multicasting-
     socket.on('send-message',(data,callback)=>{
-        
-       
+
+
     var msg = data.trim();
     if(msg.substr(0,3) === '/w '){
         // private chatting -unicasting-
+
         msg = msg.substr(3);
         var index = msg.indexOf(' ');
         if (index != -1){
@@ -56,14 +57,19 @@ io.sockets.on('connection',(socket)=>{
             if (name in users){
                 console.log('whispered!');
                 users[name].emit('whisper',{msg: msg, user: socket.username});
-                
+
             }
         } else {
             callback('Error! message cant be empty.');
         }
 
     }else {
+        if (msg != ''){
         io.sockets.emit('new-message',{msg: data, user: socket.username});
+      } else {
+        callback('Error! message cant be empty.');
+      }
+
     }
 
     })
@@ -76,14 +82,14 @@ io.sockets.on('connection',(socket)=>{
             callback(true);
             socket.username = data;
             users[socket.username] = socket
-            
+
             updateUserNames();
         }
-        
+
     });
 
-    
-    
+
+
 
     function updateUserNames() {
         io.sockets.emit('get-users', Object.keys(users))
