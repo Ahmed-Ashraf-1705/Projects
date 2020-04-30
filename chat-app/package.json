@@ -51,7 +51,7 @@
     "isarray": "^1.0.0",
     "isexe": "^2.0.0",
     "isobject": "^3.0.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "kind-of": "^6.0.2",
     "latest-version": "^3.1.0",
     "lodash": "^4.17.15",
